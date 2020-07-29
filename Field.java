@@ -34,6 +34,13 @@ public class Field {
         for (int y = 0; y < ROW-1; y++) {
             for (int x = 1; x < COL-1; x++) {
                 if (field[y][x] != 0) {
+                    if (field[y][x] == 1) {
+                        g.setColor(Color.RED);
+                    } else if (field[y][x] == 2) {
+                        g.setColor(Color.BLUE);
+                    } else {
+                        g.setColor(Color.YELLOW);
+                    }
                     if ( y % 2 == 1 ) {
                         g.fillOval(x * BALL_SIZE, y * BALL_SIZE, BALL_SIZE, BALL_SIZE);  
                     } else {

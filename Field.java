@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.JPanel;
+import java.awt.Font;
 
 
 public class Field extends JPanel implements Runnable {
@@ -42,8 +43,12 @@ public class Field extends JPanel implements Runnable {
                         g.setColor(Color.RED);
                     } else if (fieldMatrix[y][x] == 2) {
                         g.setColor(Color.BLUE);
-                    } else {
+                    } else if (fieldMatrix[y][x] == 3){
                         g.setColor(Color.YELLOW);
+                    } else if ( fieldMatrix[y][x] == 4 ){
+                        g.setColor(Color.GREEN);
+                    } else if ( fieldMatrix[y][x] == 5 ){
+                        g.setColor(Color.MAGENTA);
                     }
                     
                 } else {
@@ -269,16 +274,29 @@ public class Field extends JPanel implements Runnable {
                         }
                     }
                     Graphics g = panel.getGraphics();
+                    boolean allDelete = false;
+                    g.setColor(Color.ORANGE);
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
                     if ( isStraight(vanishMatrix) ) {
-                        
                         g.drawString("ストレート", 500, 600);
+                        allDelete = true;
                     }
                     if ( isPyramid(vanishMatrix) ) {
-                        
                         g.drawString("ピラミッド", 500, 500);
+                        allDelete = true;
                     }
                     if ( isHexagon(vanishMatrix) ) {
                         g.drawString("ヘキサゴン", 500, 400);
+                        allDelete = true;
+                    }
+                    if ( allDelete ) {
+                        for (int iy = 0; iy < ROW - 1; iy++) {
+                            for (int jx = 1; jx < COL - 1; jx++) {
+                                if ( fieldMatrix[iy][jx] == color ) {
+                                    fieldMatrix[iy][jx] = 0;
+                                }
+                            }
+                        }
                     }
                     for (int iy = 0; iy < ROW - 1; iy++) {
                         for (int jx = 1; jx < COL - 1; jx++) {

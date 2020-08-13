@@ -3,7 +3,7 @@ import java.awt.Point;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.Color;
-
+import java.util.Random;
 
 public class Ball {
     private Field field;
@@ -28,9 +28,10 @@ public class Ball {
 
     public void init() {
         block = new int[ROW_SIZE][COL_SIZE];
-        block[0][1] = 1;
-        block[1][0] = 2;
-        block[1][1] = 3;
+        Random rand = new Random();
+        block[0][1] = rand.nextInt(5) + 1;
+        block[1][0] = rand.nextInt(5) + 1;
+        block[1][1] = rand.nextInt(5) + 1;
         pos = new Point((BALL_SIZE) * (Field.COL / 2 - 1), BALL_SIZE);
     }
 
@@ -48,9 +49,14 @@ public class Ball {
                         g.setColor(Color.RED);
                     } else if (block[y][x] == 2) {
                         g.setColor(Color.BLUE);
-                    } else {
+                    } else if ( block[y][x] == 3 ){
                         g.setColor(Color.YELLOW);
+                    } else if ( block[y][x] == 4 ){
+                        g.setColor(Color.GREEN);
+                    } else if ( block[y][x] == 5 ){
+                        g.setColor(Color.MAGENTA);
                     }
+
                     if ( y % 2 == 0 ) {
                         g.fillOval(pos.x + x * BALL_SIZE, pos.y + y * BALL_SIZE, BALL_SIZE, BALL_SIZE);  
                     } else {

@@ -84,10 +84,11 @@ public class MainPanel extends JPanel implements KeyListener, Runnable {
                 repaint();
                 ball.autoMove();
             }
+            removeKeyListener(this);
+            threadSleep(100);
             fixNewBlock();
             ball.remove();
             repaint();
-            removeKeyListener(this);
             while (field.fall()) {
                 Graphics g = this.getGraphics();
                 field.draw(g);

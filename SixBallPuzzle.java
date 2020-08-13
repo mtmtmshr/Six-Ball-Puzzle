@@ -13,14 +13,16 @@ public class SixBallPuzzle extends JFrame {
         setResizable(false);
         
         Container contentPane = getContentPane();
-
-        
         // メインパネルを作成してフレームに追加
         MainPanel mainPanel = new MainPanel();
         contentPane.add(mainPanel, BorderLayout.CENTER);
+        mainPanel.requestFocus();
+        pack();
+        Thread gameThread = new Thread(mainPanel);
+        gameThread.start();
 
         // パネルサイズに合わせてフレームサイズを自動設定
-        pack();
+        
     }
 
     public static void main(String[] args) {

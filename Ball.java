@@ -74,6 +74,14 @@ public class Ball {
             case DOWN :
                 newPos = new Point(pos.x, pos.y + 30);
                 break;
+            case FALL:
+                newPos = new Point(pos.x, pos.y + 10);
+                while ( ballIsMovable(newPos, isReverse) ) {
+                    pos = newPos;
+                    newPos = new Point(newPos.x, newPos.y + 10);
+                }
+                isFixedFlag = true;
+                return;
             default:
                 break;
         }

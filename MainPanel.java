@@ -132,6 +132,8 @@ public class MainPanel extends JPanel implements KeyListener, Runnable {
             ball.turn(Ball.RIGHT);
         } else if (key == KeyEvent.VK_A) {
             ball.turn(Ball.LEFT);
+        } else if (key == KeyEvent.VK_UP) {
+            ball.move(Ball.FALL);
         }
         repaint();
     }

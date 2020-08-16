@@ -599,7 +599,7 @@ public class Field extends JPanel implements Runnable {
             }
         }
 
-        if ( x > 1 ) {
+        if ( x - 1 >= 1 ) {
             if ( ! ckd[y][x-1] && fieldMatrix[y][x-1] == color ) {
                 ckd[y][x-1] = true;
                 count++;
@@ -607,7 +607,7 @@ public class Field extends JPanel implements Runnable {
             }
         }
 
-        if ( x < COL-1 ) {
+        if ( x+1 < COL- 1) {
             if ( y % 2 != 1 || x < COL-2 ) {
                 if ( ! ckd[y][x+1] && fieldMatrix[y][x+1] == color ) {
                     ckd[y][x+1] = true;

@@ -42,12 +42,21 @@ public class MainPanel extends JPanel implements KeyListener, Runnable {
         if ( !ball.getIsReverse() ) {
             // 左下
             Point matrixPos = field.pointToMatrix(new Point(pos.x+Field.BALL_SIZE/2, pos.y+Field.BALL_SIZE));
+            if ( matrixPos.y % 2 == 1 && matrixPos.x == 0) {
+                matrixPos.x += 1;
+            }
             field.fixBlock(matrixPos, block[1][0]);
             // 上
             matrixPos = field.pointToMatrix(new Point(pos.x+Field.BALL_SIZE, pos.y));
+            if ( matrixPos.y % 2 == 0 && matrixPos.x == 1) {
+                matrixPos.x += 1;
+            }
             field.fixBlock(matrixPos, block[0][1]);
             // 右下
             matrixPos = field.pointToMatrix(new Point(pos.x+Field.BALL_SIZE*3/2, pos.y+Field.BALL_SIZE));
+            if ( matrixPos.y % 2 == 1 && matrixPos.x == 1) {
+                matrixPos.x += 1;
+            }
             field.fixBlock(matrixPos, block[1][1]);
         } else {
             // 下
@@ -69,7 +78,6 @@ public class MainPanel extends JPanel implements KeyListener, Runnable {
                 matrixPos.x++;
             }
             field.fixBlock(matrixPos, block[0][2]);
-            
         }
     }
 
